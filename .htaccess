@@ -1,0 +1,18 @@
+# Linia urm. previne accesul la folderele/fisierele din calea data
+Options -Indexes
+
+# IndexIgnore controllers models views
+
+# IndexIgnore *.jpg banner?.png
+
+RewriteEngine On
+RewriteRule ^([\w]+)$ ?page=$1
+
+ErrorDocument 403 /Curs_22(MVC_part2)/errors/error403.html
+ErrorDocument 404 /Curs_22(MVC_part2)/errors/error404.html
+
+
+# AuthUserFile C:\xampp\htdocs\Curs_22(MVC_part2)\.htpasswd
+# AuthType Basic
+# AuthName "Introdu user si pass:"
+# Require valid-user
