@@ -44,18 +44,18 @@ class UsersModel extends DBModel
     // }
 
     public function delProducts($id)
-{
-    $q = "DELETE FROM `products` WHERE `ID` = ?";
-    $stmt = $this->db()->prepare($q);
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
+    {
+        $q = "DELETE FROM `products` WHERE `ID` = ?";
+        $stmt = $this->db()->prepare($q);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
 
-    if ($stmt->affected_rows > 0) {
-        return true;
-    } else {
-        return false;
+        if ($stmt->affected_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
-}
 
 
     //! ADD USER
@@ -117,7 +117,7 @@ class UsersModel extends DBModel
 
     public function displayData()
     {
-        $dataArray = $this->getProducts();
+        $dataArray = $this->getUsers();
 
         $table = '';
 
@@ -128,7 +128,6 @@ class UsersModel extends DBModel
             foreach (array_keys($dataArray[0]) as $field) {
                 $table .= "<th>$field</th>";
             }
-            $table .= '<th>Action</th>';
             $table .= '</tr>';
 
             // Data rows
@@ -137,7 +136,6 @@ class UsersModel extends DBModel
                 foreach ($user as $field => $value) {
                     $table .= "<td>$value</td>";
                 }
-                $table .= '<td>' . "<a href='delete?&id=" . $user['ID'] . "'>DELETE</a>";
                 $table .= '</tr>';
             }
             $table .= '</table>';
